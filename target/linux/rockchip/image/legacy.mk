@@ -324,6 +324,15 @@ define Device/cyber_cyber3588-aib
 $(call Device/Legacy/rk3588,$(1))
   DEVICE_VENDOR := Cyber
   DEVICE_MODEL := Cyber3588-AIB
-  DEVICE_PACKAGES += kmod-r8169 kmod-nvme kmod-ata-ahci-dwc kmod-hwmon-pwmfan kmod-thermal 
+  DEVICE_PACKAGES += kmod-r8169 kmod-nvme kmod-ata-ahci-dwc kmod-hwmon-pwmfan kmod-thermal
 endef
 TARGET_DEVICES += cyber_cyber3588-aib
+
+define Device/yijiahe_jm10
+$(call Device/Legacy/rk3588,$(1))
+  DEVICE_VENDOR := YIJIAHE
+  DEVICE_MODEL := JM10
+  DEVICE_DTS := rk3588/rk3588-yijiahe-$(lastword $(subst _, ,$(1)))
+  DEVICE_PACKAGES += kmod-hwmon-pwmfan kmod-thermal kmod-dsa-mv88e6xxx kmod-brcmfmac rkwifi-firmware-ap6275p
+endef
+TARGET_DEVICES += yijiahe_jm10
